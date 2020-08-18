@@ -33,6 +33,7 @@ namespace complaintProgramInput
         {
             session sessionLogin = new session();
             sessionLogin.login(txtUsername.Text, txtPassword.Text);
+            //MessageBox.Show(sessionLogin.ID);
             if (sessionLogin.passwordWrong == true)
             {
                 MessageBox.Show("Wrong username/password!");
@@ -40,7 +41,11 @@ namespace complaintProgramInput
                 return;
             }
             else //its a true login
-                MessageBox.Show("yes");
+            {
+                frmMain frm = new frmMain(Convert.ToInt32(sessionLogin.ID));
+                frm.Show();
+                this.Hide();
+            }
             
         }
 

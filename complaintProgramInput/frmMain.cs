@@ -5,16 +5,21 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Diagnostics;
 
 namespace complaintProgramInput
 {
     public partial class frmMain : Form
     {
         public int login_id { get; set; }
+        public int maxID { get; set; }
+        public int appRestart { get; set; }
+        public int attachmentsAdded { get; set; }
         public frmMain(int id)
         {
             InitializeComponent();
@@ -27,7 +32,21 @@ namespace complaintProgramInput
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-                Environment.Exit(1);
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (appRestart == -1)
+                {
+
+                }
+                else
+                {
+                    if (MessageBox.Show("Are you sure you want to exit?", "Exit!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        Environment.Exit(1);
+                    else
+                        e.Cancel = true;
+                }
+            }
+
         }
 
         private void chkTraditonal_CheckedChanged(object sender, EventArgs e)
@@ -226,25 +245,72 @@ namespace complaintProgramInput
                         cmd.Parameters.Add("@tel", SqlDbType.VarChar).Value = txtTel.Text;
                         cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = txtDescription.Text;
                         cmd.Parameters.Add("@login_user", SqlDbType.VarChar).Value = login_id;
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
 
+
+                        conn.Open();
+                        int returnValue = 0;
+                        returnValue = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        maxID = returnValue;
+                        //make the folder regardless
+                        string path = @" \\designsvr1\public\ryucxd\attachments\" + maxID.ToString();
+                        bool exists = System.IO.Directory.Exists(path);
+                        if (!exists)
+                            System.IO.Directory.CreateDirectory(path);
+
+                        DialogResult attachments = MessageBox.Show("Would you like to add attachments?","Attachments",MessageBoxButtons.YesNo);
+                        if (attachments == DialogResult.Yes)
+                            Process.Start("explorer.exe", path);
                         //close it down
+
+                        appRestart = -1;
+                        Application.Restart();
                     }
-                    //grab the max id fast
-                    //we have commited this here now SO we can fire the batchfile to move the attachments (if there are any  wrote all of this down on my paper!
-                    //need to wase about 5 minutes now tho hehe xd lego 8D
+                    
 
                 }
             }
-            //anything else does nothing
+           
+            //if (attachmentsAdded == -1) //no longer doing batch
+            //{
+            //    exec_batch();
+            //}
         }
 
         private void exec_batch()
         {
-            //fire everything here
+            ////fire everything here
+            ////location of the batch file will be at S:\tom\Scripts
+            //////okay so here we need to fire the batch file
+            //string strCmdLine = @"/C move \\designsvr1\public\temp_tomasz\*.*  \\designsvr1\public\ryucxd\attachments\" + maxID.ToString() + @"\";
+            //    //@"\\\\designsvr1\\apps\\tom\\Scripts\\move_attachments "  + maxID.ToString();
+            ////"\\designsvr1\\apps\\tom\\Scripts\\move_attachments " + maxID.ToString();
+            //System.Diagnostics.Process.Start("CMD.exe", strCmdLine);
+
+            ////string filePath = @"\\\\designsvr1\\apps\\tom\\Scripts\\move_attachments ";
+            ////string arguments = maxID.ToString();
+
+            ////if (File.Exists(filePath))
+            ////{
+            ////    ProcessStartInfo psi = new ProcessStartInfo(filePath, arguments);
+            ////    psi.UseShellExecute = false;
+            ////    psi.CreateNoWindow = true;
+            ////    Process.Start(psi);
+            ////}
+            //// i think this will run the command on the client side and not on the server 
+            
         }
 
+        private void btn_attachments_Click(object sender, EventArgs e)
+        {
+            //this gonna be fun
+            //its been clicked so set variable to -1
+            attachmentsAdded = -1;
+            MessageBox.Show("Please double check that the items you are adding have 100% finished moving before creating the complaint.", "WARNING", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            Process.Start(@"\\designsvr1\public\temp_tomasz");
+            MessageBox.Show("pause somehow");
+            maxID = 33;
+            exec_batch();
+        }
     }
 }

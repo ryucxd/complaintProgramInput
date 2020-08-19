@@ -52,6 +52,7 @@
             this.panelCust = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_attachments = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpCustSupplier.SuspendLayout();
             this.SuspendLayout();
@@ -266,7 +267,7 @@
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(124, 532);
+            this.btnCreate.Location = new System.Drawing.Point(211, 528);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(122, 34);
             this.btnCreate.TabIndex = 19;
@@ -312,11 +313,24 @@
             this.panel4.Size = new System.Drawing.Size(63, 19);
             this.panel4.TabIndex = 23;
             // 
+            // btn_attachments
+            // 
+            this.btn_attachments.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_attachments.Location = new System.Drawing.Point(34, 528);
+            this.btn_attachments.Name = "btn_attachments";
+            this.btn_attachments.Size = new System.Drawing.Size(122, 34);
+            this.btn_attachments.TabIndex = 21;
+            this.btn_attachments.Text = "Add Attachments";
+            this.btn_attachments.UseVisualStyleBackColor = true;
+            this.btn_attachments.Visible = false;
+            this.btn_attachments.Click += new System.EventHandler(this.btn_attachments_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(365, 579);
+            this.Controls.Add(this.btn_attachments);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.panelDescription);
@@ -367,5 +381,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panelCust;
         private System.Windows.Forms.Panel panelDescription;
+        private System.Windows.Forms.Button btn_attachments;
     }
 }

@@ -30,8 +30,10 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkTraditonal = new System.Windows.Forms.CheckBox();
             this.chkSlimline = new System.Windows.Forms.CheckBox();
+            this.chkTraditonal = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAttention = new System.Windows.Forms.TextBox();
             this.cmbCustSupplier = new System.Windows.Forms.ComboBox();
@@ -39,19 +41,17 @@
             this.lblAccRef = new System.Windows.Forms.Label();
             this.cmbAccRef = new System.Windows.Forms.ComboBox();
             this.grpCustSupplier = new System.Windows.Forms.GroupBox();
-            this.lblContact = new System.Windows.Forms.Label();
-            this.txtContact = new System.Windows.Forms.TextBox();
             this.lblTel = new System.Windows.Forms.Label();
             this.txtTel = new System.Windows.Forms.TextBox();
+            this.lblContact = new System.Windows.Forms.Label();
+            this.txtContact = new System.Windows.Forms.TextBox();
+            this.panelCust = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDoorNum = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.panelDescription = new System.Windows.Forms.Panel();
-            this.panelCust = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.btn_attachments = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpCustSupplier.SuspendLayout();
@@ -80,6 +80,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Traditional/Slimline";
             // 
+            // chkSlimline
+            // 
+            this.chkSlimline.AutoSize = true;
+            this.chkSlimline.Location = new System.Drawing.Point(98, 30);
+            this.chkSlimline.Name = "chkSlimline";
+            this.chkSlimline.Size = new System.Drawing.Size(61, 17);
+            this.chkSlimline.TabIndex = 1;
+            this.chkSlimline.Text = "Slimline";
+            this.chkSlimline.UseVisualStyleBackColor = true;
+            this.chkSlimline.CheckedChanged += new System.EventHandler(this.chkSlimline_CheckedChanged);
+            // 
             // chkTraditonal
             // 
             this.chkTraditonal.AutoSize = true;
@@ -91,16 +102,23 @@
             this.chkTraditonal.UseVisualStyleBackColor = true;
             this.chkTraditonal.CheckedChanged += new System.EventHandler(this.chkTraditonal_CheckedChanged);
             // 
-            // chkSlimline
+            // panel3
             // 
-            this.chkSlimline.AutoSize = true;
-            this.chkSlimline.Location = new System.Drawing.Point(98, 30);
-            this.chkSlimline.Name = "chkSlimline";
-            this.chkSlimline.Size = new System.Drawing.Size(61, 17);
-            this.chkSlimline.TabIndex = 1;
-            this.chkSlimline.Text = "Slimline";
-            this.chkSlimline.UseVisualStyleBackColor = true;
-            this.chkSlimline.CheckedChanged += new System.EventHandler(this.chkSlimline_CheckedChanged);
+            this.panel3.BackColor = System.Drawing.Color.DarkRed;
+            this.panel3.ForeColor = System.Drawing.Color.DarkSalmon;
+            this.panel3.Location = new System.Drawing.Point(5, 29);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(77, 19);
+            this.panel3.TabIndex = 22;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DarkRed;
+            this.panel4.ForeColor = System.Drawing.Color.DarkSalmon;
+            this.panel4.Location = new System.Drawing.Point(97, 29);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(63, 19);
+            this.panel4.TabIndex = 23;
             // 
             // label1
             // 
@@ -129,7 +147,7 @@
             this.cmbCustSupplier.Location = new System.Drawing.Point(130, 28);
             this.cmbCustSupplier.Name = "cmbCustSupplier";
             this.cmbCustSupplier.Size = new System.Drawing.Size(149, 21);
-            this.cmbCustSupplier.TabIndex = 6;
+            this.cmbCustSupplier.TabIndex = 2;
             this.cmbCustSupplier.SelectedIndexChanged += new System.EventHandler(this.cmbCustSupplier_SelectedIndexChanged);
             this.cmbCustSupplier.TextChanged += new System.EventHandler(this.cmbCustSupplier_TextChanged);
             // 
@@ -162,7 +180,7 @@
             this.cmbAccRef.Location = new System.Drawing.Point(68, 67);
             this.cmbAccRef.Name = "cmbAccRef";
             this.cmbAccRef.Size = new System.Drawing.Size(235, 21);
-            this.cmbAccRef.TabIndex = 8;
+            this.cmbAccRef.TabIndex = 3;
             this.cmbAccRef.Visible = false;
             // 
             // grpCustSupplier
@@ -182,26 +200,6 @@
             this.grpCustSupplier.TabIndex = 2;
             this.grpCustSupplier.TabStop = false;
             // 
-            // lblContact
-            // 
-            this.lblContact.AutoSize = true;
-            this.lblContact.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContact.Location = new System.Drawing.Point(26, 108);
-            this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(101, 14);
-            this.lblContact.TabIndex = 7;
-            this.lblContact.Text = "Customer Contact";
-            this.lblContact.Visible = false;
-            // 
-            // txtContact
-            // 
-            this.txtContact.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(130, 105);
-            this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(149, 22);
-            this.txtContact.TabIndex = 6;
-            this.txtContact.Visible = false;
-            // 
             // lblTel
             // 
             this.lblTel.AutoSize = true;
@@ -219,9 +217,39 @@
             this.txtTel.Location = new System.Drawing.Point(130, 133);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(149, 22);
-            this.txtTel.TabIndex = 14;
+            this.txtTel.TabIndex = 5;
             this.txtTel.Visible = false;
             this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
+            // 
+            // lblContact
+            // 
+            this.lblContact.AutoSize = true;
+            this.lblContact.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContact.Location = new System.Drawing.Point(26, 108);
+            this.lblContact.Name = "lblContact";
+            this.lblContact.Size = new System.Drawing.Size(101, 14);
+            this.lblContact.TabIndex = 7;
+            this.lblContact.Text = "Customer Contact";
+            this.lblContact.Visible = false;
+            // 
+            // txtContact
+            // 
+            this.txtContact.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.Location = new System.Drawing.Point(130, 105);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Size = new System.Drawing.Size(149, 22);
+            this.txtContact.TabIndex = 4;
+            this.txtContact.Visible = false;
+            // 
+            // panelCust
+            // 
+            this.panelCust.BackColor = System.Drawing.Color.DarkRed;
+            this.panelCust.ForeColor = System.Drawing.Color.DarkSalmon;
+            this.panelCust.Location = new System.Drawing.Point(67, 66);
+            this.panelCust.Name = "panelCust";
+            this.panelCust.Size = new System.Drawing.Size(237, 23);
+            this.panelCust.TabIndex = 21;
+            this.panelCust.Visible = false;
             // 
             // label3
             // 
@@ -240,7 +268,7 @@
             this.txtDoorNum.Location = new System.Drawing.Point(122, 164);
             this.txtDoorNum.Name = "txtDoorNum";
             this.txtDoorNum.Size = new System.Drawing.Size(149, 22);
-            this.txtDoorNum.TabIndex = 6;
+            this.txtDoorNum.TabIndex = 1;
             this.txtDoorNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDoorNum_KeyPress);
             // 
             // lblDescription
@@ -260,14 +288,14 @@
             this.txtDescription.Location = new System.Drawing.Point(16, 402);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(335, 111);
-            this.txtDescription.TabIndex = 18;
+            this.txtDescription.TabIndex = 6;
             this.txtDescription.Text = "";
             this.txtDescription.Visible = false;
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(211, 528);
+            this.btnCreate.Location = new System.Drawing.Point(121, 528);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(122, 34);
             this.btnCreate.TabIndex = 19;
@@ -284,34 +312,6 @@
             this.panelDescription.Size = new System.Drawing.Size(337, 113);
             this.panelDescription.TabIndex = 20;
             this.panelDescription.Visible = false;
-            // 
-            // panelCust
-            // 
-            this.panelCust.BackColor = System.Drawing.Color.DarkRed;
-            this.panelCust.ForeColor = System.Drawing.Color.DarkSalmon;
-            this.panelCust.Location = new System.Drawing.Point(67, 66);
-            this.panelCust.Name = "panelCust";
-            this.panelCust.Size = new System.Drawing.Size(237, 23);
-            this.panelCust.TabIndex = 21;
-            this.panelCust.Visible = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.DarkRed;
-            this.panel3.ForeColor = System.Drawing.Color.DarkSalmon;
-            this.panel3.Location = new System.Drawing.Point(5, 29);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(77, 19);
-            this.panel3.TabIndex = 22;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DarkRed;
-            this.panel4.ForeColor = System.Drawing.Color.DarkSalmon;
-            this.panel4.Location = new System.Drawing.Point(97, 29);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(63, 19);
-            this.panel4.TabIndex = 23;
             // 
             // btn_attachments
             // 
@@ -343,7 +343,8 @@
             this.Controls.Add(this.txtAttention);
             this.Controls.Add(this.lblTitle);
             this.Name = "frmMain";
-            this.Text = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Add a Complaint";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmMain_Paint);
             this.groupBox1.ResumeLayout(false);

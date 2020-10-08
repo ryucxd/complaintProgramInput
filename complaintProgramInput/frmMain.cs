@@ -253,7 +253,7 @@ namespace complaintProgramInput
 
                         maxID = returnValue;
                         //make the folder regardless
-                        string path = @" \\designsvr1\public\ryucxd\attachments\" + maxID.ToString();
+                        string path = @" \\designsvr1\public\complaintAttachments\new_complaint_attachments\Complaint_" + maxID.ToString();
                         bool exists = System.IO.Directory.Exists(path);
                         if (!exists)
                             System.IO.Directory.CreateDirectory(path);
